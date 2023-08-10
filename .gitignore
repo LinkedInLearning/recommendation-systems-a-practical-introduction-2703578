@@ -28,6 +28,7 @@ venv.bak/
 .~*
 Untitled*.ipynb
 *-Copy*.ipynb
+output.ipynb
 .vscode/
 u.item
 ml-100k/
