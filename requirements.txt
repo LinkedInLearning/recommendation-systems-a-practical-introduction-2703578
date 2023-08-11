@@ -1,1 +1,2 @@
-git+https://github.com/microsoft/recommenders.git@main
+lightfm>=1.15,!=1.17
+recommenders>=1.1.1
