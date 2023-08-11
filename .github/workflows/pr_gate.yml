@@ -37,7 +37,7 @@ jobs:
       fail-fast: false
       max-parallel: 20 # Usage limits: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
       matrix:
-        os: [ubuntu-22.04] # Available images: https://github.com/actions/runner-images/#available-images
+        os: [ubuntu-20.04] # Available images: https://github.com/actions/runner-images/#available-images
         python: ["3.7"]
 
     steps:
@@ -51,7 +51,7 @@ jobs:
     
     - name: Install dependencies
       run: |
-        pip install --no-use-pep517 -r requirements.txt
+        pip install -r requirements.txt
 
     - name: Python version and dependency list
       run: |
