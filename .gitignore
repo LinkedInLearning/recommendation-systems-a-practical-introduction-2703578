@@ -4,6 +4,7 @@ node_modules
 npm-debug.log
 .Python
 build/
+__pycache__/
 develop-eggs/
 dist/
 downloads/
