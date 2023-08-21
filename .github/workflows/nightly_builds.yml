@@ -1,10 +1,15 @@
-name: PR gate
+name: Nightly builds
 
 on:
-  pull_request:
-    # Only trigger the workflow with a PR to main
-    branches:
-    - main
+  #          ┌───────────── minute (0 - 59)
+  #          │  ┌───────────── hour (0 - 23)
+  #          │  │ ┌───────────── day of the month (1 - 31)
+  #          │  │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+  #          │  │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)                                  
+  #          │  │ │ │ │
+  #          │  │ │ │ │
+  schedule: 
+    - cron: "42 0 * * *"  # running every day at 0:42 UTC
 
   # Enable manual trigger
   workflow_dispatch:
@@ -22,7 +27,7 @@ jobs:
   test:
     name: Test Python ${{ matrix.python }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 40
     strategy:
       fail-fast: false
       max-parallel: 20 # Usage limits: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
