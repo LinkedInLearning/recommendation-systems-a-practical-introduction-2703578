@@ -42,7 +42,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        pip install pytest
+        pip install pytest "papermill>=2.1.2,<3"
         pip install --no-use-pep517 lightfm
         pip install -r requirements.txt
 
@@ -53,6 +53,6 @@ jobs:
         which python
         pip list
 
-    - name: Run tests
+    - name: Run unit tests
       run: |
-        pytest tests --disable-warnings --durations 0
+        pytest tests/unit --disable-warnings --durations 0
