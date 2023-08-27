@@ -14,6 +14,7 @@ def kernel_name():
     return "python3"
 
 
+@pytest.fixture(scope="session")
 def path_notebooks():
     """Returns the path of the notebooks folder"""
     return os.path.abspath(
