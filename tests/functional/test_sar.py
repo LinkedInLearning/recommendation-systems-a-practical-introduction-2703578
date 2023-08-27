@@ -4,6 +4,10 @@ import papermill as pm
 import scrapbook as sb
 
 
+TOL = 0.05
+ABS_TOL = 0.05
+
+
 def test_data_prep_runs(path_notebooks, output_notebook, kernel_name):
     notebook_path = os.path.join(path_notebooks, "02_sar_movielens.ipynb")
     pm.execute_notebook(
