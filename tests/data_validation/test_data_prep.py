@@ -1,4 +1,3 @@
-import os
 import pytest
 from recommenders.datasets import movielens
 
@@ -57,5 +56,6 @@ def test_movielens(movielens_cols, movielens_100k_first_row):
     assert df["title"].nunique() == 1664
     assert df["genres"].nunique() == 216
     assert df["year"].nunique() == 71
-    # assert df["year"].min() == "1922"
-    # assert df["year"].max() == "1998"
+    df["year_int"] = df["year"].apply(lambda x: int(x) if x is not None else None)
+    assert df["year_int"].min() == 1922
+    assert df["year_int"].max() == 1998
