@@ -1,1 +1,2 @@
 git+https://github.com/microsoft/recommenders.git@main
+pytest>=3.6.4
