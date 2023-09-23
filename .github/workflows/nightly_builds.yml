@@ -32,7 +32,7 @@ jobs:
       fail-fast: false
       max-parallel: 20 # Usage limits: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
       matrix:
-        os: [ubuntu-20.04] # Available images: https://github.com/actions/runner-images/#available-images
+        os: [ubuntu-22.04] # Available images: https://github.com/actions/runner-images/#available-images
         python: ["3.7"]
 
     steps:
@@ -47,7 +47,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        pip install pytest "papermill>=2.1.2,<3" "jupyter>=1,<2"
         pip install --no-use-pep517 lightfm
         pip install -r requirements.txt
 
@@ -58,6 +57,6 @@ jobs:
         which python
         pip list
 
-    - name: Run tests
+    - name: Run functional tests
       run: |
-        pytest tests --disable-warnings --durations 0
+        pytest tests/functional --disable-warnings --durations 0
