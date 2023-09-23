@@ -1,26 +1,48 @@
-import os
 import pytest
-import papermill as pm
-import scrapbook as sb
+
+from recommenders.datasets import movielens
+from recommenders.datasets.python_splitters import python_stratified_split
+from recommenders.models.sar import SAR
+from recommenders.evaluation.python_evaluation import (
+    map_at_k,
+    ndcg_at_k,
+    precision_at_k,
+    recall_at_k,
+)
 
 
-TOL = 0.05
 ABS_TOL = 0.05
 
 
-def test_data_prep_runs(path_notebooks, output_notebook, kernel_name):
-    notebook_path = os.path.join(path_notebooks, "02_sar_movielens.ipynb")
-    pm.execute_notebook(
-        notebook_path,
-        output_notebook,
-        kernel_name=kernel_name,
-        parameters=dict(TOP_K=10, MOVIELENS_DATA_SIZE="100k"),
+@pytest.fixture(scope="module")
+def data():
+    return movielens.load_pandas_df(
+        size="100k", header=["userID", "itemID", "rating", "timestamp"]
     )
-    results = sb.read_notebook(output_notebook).scraps.dataframe.set_index("name")[
-        "data"
-    ]
 
-    assert results["map"] == pytest.approx(0.110591, rel=TOL, abs=ABS_TOL)
-    assert results["ndcg"] == pytest.approx(0.382461, rel=TOL, abs=ABS_TOL)
-    assert results["precision"] == pytest.approx(0.330753, rel=TOL, abs=ABS_TOL)
-    assert results["recall"] == pytest.approx(0.176385, rel=TOL, abs=ABS_TOL)
+
+def test_sar_movielens_functional(data, sar_header):
+    TOP_K = 10
+    train, test = python_stratified_split(
+        data, ratio=0.75, col_user="userID", col_item="itemID", seed=42
+    )
+    model = SAR(**sar_header)
+    model.fit(train)
+    top_k = model.recommend_k_items(test, top_k=TOP_K, remove_seen=True)
+    eval_map = map_at_k(
+        test, top_k, col_user="userID", col_item="itemID", col_rating="rating", k=TOP_K
+    )
+    eval_ndcg = ndcg_at_k(
+        test, top_k, col_user="userID", col_item="itemID", col_rating="rating", k=TOP_K
+    )
+    eval_precision = precision_at_k(
+        test, top_k, col_user="userID", col_item="itemID", col_rating="rating", k=TOP_K
+    )
+    eval_recall = recall_at_k(
+        test, top_k, col_user="userID", col_item="itemID", col_rating="rating", k=TOP_K
+    )
+
+    assert eval_map == pytest.approx(0.106959, abs=ABS_TOL)
+    assert eval_ndcg == pytest.approx(0.379533, abs=ABS_TOL)
+    assert eval_precision == pytest.approx(0.331071, abs=ABS_TOL)
+    assert eval_recall == pytest.approx(0.176837, abs=ABS_TOL)

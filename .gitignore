@@ -27,6 +27,7 @@ ENV/
 env.bak/
 venv.bak/
 .~*
+.ipynb_checkpoints/
 Untitled*.ipynb
 *-Copy*.ipynb
 output.ipynb
@@ -36,3 +37,4 @@ ml-100k/
 ml-10M100K/
 ml-1m/
 ml-20m/
+.hypothesis/
