@@ -4,8 +4,9 @@
     // Additional Extensions Here
   ],
   "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
-  "postAttachCommand": "git pull --all"
-  
+  "postAttachCommand": "git pull --all",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "pip install -U pip && pip install -r requirements.txt",
   // Update welcome text and set terminal prompt to '$ '
 }
 // DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference
