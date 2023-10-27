@@ -2,7 +2,7 @@ import cherrypy
 import psycopg2
 
 # NOTE: MODIFY THE FILE secrets.template.py
-from secrets import DATABASE, USER, PASS
+from reco_secrets import DATABASE, USER, PASS
 
 
 class UserItemsAPI:
