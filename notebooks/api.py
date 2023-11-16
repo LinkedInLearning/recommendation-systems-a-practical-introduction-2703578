@@ -1,21 +1,17 @@
 from flask import Flask, request, jsonify
-import psycopg2
+import sqlite3
 
 # NOTE: MODIFY THE FILE secrets.template.py
 from reco_secrets import DATABASE, USER, PASS
 
 
-app = Flask(__name)
+# App
+app = Flask(__name__)
 
 
 def get_recommendations(user_id):
-    conn = psycopg2.connect(
-        database=DATABASE,
-        user=USER,
-        password=PASS,
-        host="localhost",
-        port="5432",
-    )
+    conn = sqlite3.connect(database=DATABASE)
+
     cur = conn.cursor()
 
     cur.execute("SELECT * FROM recommendations WHERE user_id = %s", (user_id,))
