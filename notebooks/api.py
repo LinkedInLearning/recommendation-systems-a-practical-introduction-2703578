@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import sqlite3
 
 # NOTE: MODIFY THE FILE secrets.template.py
-from reco_secrets import DATABASE, USER, PASS
+from reco_secrets import DATABASE, TABLE_NAME
 
 
 # App
@@ -14,7 +14,7 @@ def get_recommendations(user_id):
 
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM recommendations WHERE user_id = %s", (user_id,))
+    cur.execute(f"SELECT * FROM {TABLE_NAME} WHERE user_id = ?", (user_id,))
     row = cur.fetchone()
     
     cur.close()
