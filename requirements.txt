@@ -1,4 +1,2 @@
 git+https://github.com/microsoft/recommenders.git@main
-psycopg2-binary>=2.9
-Flask>=2,<3
 pytest>=3.6.4
