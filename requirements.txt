@@ -1,2 +1,3 @@
+pandera<0.18.0
 git+https://github.com/microsoft/recommenders.git@main
 pytest>=3.6.4
