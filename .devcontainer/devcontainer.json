@@ -1,12 +1,11 @@
 {
+  "name": "Python with Jupyter",
+  "dockerFile": "Dockerfile",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
   "extensions": [
+    "ms-python.python",
     "GitHub.github-vscode-theme"
-    // Additional Extensions Here
-  ],
-  "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
-  "postAttachCommand": "git pull --all",
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "pip install -U pip setuptools wheel && pip install numpy 'Cython<4' 'scipy<1.11.0' && pip install -r requirements.txt",
-  // Update welcome text and set terminal prompt to '$ '
+  ]
 }
-// DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference
