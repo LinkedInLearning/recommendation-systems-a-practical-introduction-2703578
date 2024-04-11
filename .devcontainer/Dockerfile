@@ -1,5 +1,9 @@
-# Use an official Python 3.7 image as the base
-FROM python:3.7
+ARG PYTHON_VERSION
+FROM mcr.microsoft.com/vscode/devcontainers/python:${PYTHON_VERSION}
+
+# Switch to non-root user
+ARG REMOTE_USER
+USER ${REMOTE_USER}
 
 # Set the working directory
 WORKDIR /workspaces/recommendation-systems-a-practical-introduction-2703578
@@ -11,7 +15,7 @@ RUN pip install -U pip setuptools wheel && \
 
 # Install Jupyter Notebook and create a virtual environment kernel
 RUN pip install jupyter ipykernel && \
-    python -m ipykernel install --user --name=myenv
+    python -m ipykernel install --user --name=reco
 
 # Expose the Jupyter port
 EXPOSE 8888
