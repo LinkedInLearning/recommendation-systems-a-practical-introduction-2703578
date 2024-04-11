@@ -1,7 +1,7 @@
 {
   "name": "Python 3.7",
   "build": {
-      "dockerfile": ".devcontainer/Dockerfile",
+      "dockerfile": "Dockerfile",
       "args": {
           "VARIANT": "3.7"
       }
