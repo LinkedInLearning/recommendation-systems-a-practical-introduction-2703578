@@ -1,12 +1,26 @@
 {
-  "extensions": [
-    "GitHub.github-vscode-theme"
-    // Additional Extensions Here
-  ],
-  "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
-  "postAttachCommand": "git pull --all",
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "pip install -U pip && pip install -r requirements.txt",
-  // Update welcome text and set terminal prompt to '$ '
-}
-// DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+    "name": "Reco",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "hostRequirements": {
+      "cpus": 4
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.7.16"
+        }
+    },
+    "waitFor": "onCreateCommand",
+    "updateContentCommand": "python3 -m pip install --upgrade pip setuptools wheel && pip install numpy 'Cython<4' 'scipy<1.11.0' && pip install -r requirements.txt",
+    "postCreateCommand": "",
+    "customizations": {
+      "codespaces": {
+        "openFiles": []
+      },
+      "vscode": {
+        "extensions": [
+          "ms-toolsai.jupyter",
+          "ms-python.python"
+        ]
+      }
+    }
+  }
