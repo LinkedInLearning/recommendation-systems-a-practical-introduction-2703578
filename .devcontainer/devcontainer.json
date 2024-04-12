@@ -4,9 +4,7 @@
     "hostRequirements": {
       "cpus": 4
     },
-    "settings": {
-        "python.pythonPath": "/usr/local/bin/python3.7"
-    },
+    "runArgs": ["-e", "PYTHON_VERSION=3.7"],
     "waitFor": "onCreateCommand",
     "updateContentCommand": "python3 -m pip install --upgrade pip setuptools wheel && pip install numpy 'Cython<4' 'scipy<1.11.0' && pip install -r requirements.txt",
     "postCreateCommand": "",
