@@ -16,6 +16,37 @@ Whether you’re a Data Scientist, Machine Learning Engineer, Data Engineer, Sof
 [lil-course-url]: https://www.linkedin.com/learning/recommendation-systems-a-practical-introduction
 [lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQG8MPbTpDa58w/learning-public-crop_675_1200/0/1706307294561?e=2147483647&v=beta&t=KdN9SWgdqYQupXRM25E8D4WArQcadJt-JRZh16fgrpE
 
+## Content
+
+The course has the following sections:
+
+1. Introduction
+    * Why recommendation systems?
+2. Data Prep
+    * Data in recommendation systems.
+    * Data splitting.
+    * The cold-start problem.
+3. Modeling
+    * Recommendation systems algorithms.
+    * Collaborative filtering.
+    * Content-based filtering.
+    * Building your first collaborative filtering solution.
+    * Building your first content-based filtering solution.
+    * Evaluation of recommendation systems.
+4. Deployment
+    * Recommendation system architectures.
+    * Evaluation in production.
+5. MLOps
+    * Tests in recommendation systems.
+    * The machine learning lifecycle.
+
+## Code
+
+* [Data prep](notebooks/01_data_prep.ipynb)
+* [Collaborative filtering with SAR](notebooks/02_sar_movielens.ipynb)
+* [Content-based filtering with LightGBM](notebooks/03_lightgbm_movielens.ipynb)
+* [Batch architecture](notebooks/04_batch_architecture.ipynb)
+
 ## Installation via GitHub Codespaces
 
 1. Go to Code.
