@@ -33,7 +33,7 @@ jobs:
       max-parallel: 20 # Usage limits: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
       matrix:
         os: [ubuntu-22.04] # Available images: https://github.com/actions/runner-images/#available-images
-        python: ["3.7"]
+        python: ["3.7", "3.8", "3.9", "3.10", "3.11"]
 
     steps:
     - name: Checkout
