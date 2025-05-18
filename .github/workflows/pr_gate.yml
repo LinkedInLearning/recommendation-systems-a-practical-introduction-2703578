@@ -41,9 +41,10 @@ jobs:
     
     - name: Install pre dependencies
       run: |
-        python -m pip install -q --upgrade pip setuptools wheel
+        python -m pip install -q --upgrade pip setuptools wheel      
         if [ "${{ matrix.python }}" == "3.8" ]; then
-          pip install "Cython<3.1" "numpy<2.0.0" 
+          echo "Installing pre-dependencies for Python 3.8"
+          pip install "Cython<3.1" "numpy<2.0.0" "scipy<=1.13.1"
         fi
 
     - name: Install dependencies
