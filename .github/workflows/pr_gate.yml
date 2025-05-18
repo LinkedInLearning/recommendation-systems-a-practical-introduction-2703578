@@ -44,7 +44,7 @@ jobs:
         python -m pip install -q --upgrade pip setuptools wheel      
         if [ "${{ matrix.python }}" == "3.8" ]; then
           echo "Installing pre-dependencies for Python 3.8"
-          pip install "Cython<3.1" "numpy<2.0.0" "scipy<=1.13.1"
+          pip install "Cython<3.1" "numpy<2.0.0" "scipy<=1.13.1" "scikit-surprise<=1.1.3"
         fi
 
     - name: Install dependencies
