@@ -60,6 +60,7 @@ jobs:
 
     - name: Run unit tests
       run: |
+        pip install -q "pytest>=3.6.4"
         pytest tests/unit --disable-warnings --durations 0
         
     - name: Run data validation tests

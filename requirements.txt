@@ -1,4 +1,2 @@
-pytest>=3.6.4
-Cython<3.1;python_version<='3.8'
 recommenders==1.1.1;python_version<='3.7'
 recommenders==1.2.1;python_version>='3.8'
