@@ -39,12 +39,15 @@ jobs:
       with:
         python-version: ${{ matrix.python }}
     
-    - name: Install dependencies
+    - name: Install pre dependencies
       run: |
         python -m pip install -q --upgrade pip setuptools wheel
         if [ "${{ matrix.python }}" == "3.8" ]; then
           pip install "Cython<3.1" "numpy<2.0.0" 
         fi
+
+    - name: Install dependencies
+      run: |
         pip install -r requirements.txt
 
     - name: Python version and dependency list
